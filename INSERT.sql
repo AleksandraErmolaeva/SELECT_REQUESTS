@@ -1,0 +1,73 @@
+INSERT INTO Genre (name)  
+VALUES ('rock'),
+       ('alternative'),
+       ('raggue');
+
+INSERT INTO Performer (name)
+VALUES ('Linkin Park'),
+       ('Bob Marley'),
+       ('Кино'),
+       ('The Killers');
+
+INSERT INTO Genre_Performer
+VALUES (1,3),
+       (2,1),
+       (2,4),
+       (3,2);
+
+INSERT INTO Album (name, release_year)
+VALUES ('Meteora', 2003),
+       ('Ночь', 1986),
+       ('Imploding the Mirage', 2020),
+       ('Catch a Fire',1973),
+       ('Hybrid Theory',2000);
+
+INSERT INTO Album_Performer 
+VALUES (1,1),
+       (2,3),
+       (3,4),
+       (4,2),
+       (5,1);
+
+INSERT INTO Track (name, duration, album_id)
+VALUES ('Numb', 188, 1),
+       ('Easier to run', 214, 1),
+       ('Faint', 162, 1),
+       ('Ночь', 331, 2 ),
+       ('Мы хотим танцевать', 241, 2),
+       ('Последний герой', 137, 2),
+       ('My God', 219, 3),
+       ('Blowback', 240, 3),
+       ('Coution', 270, 3),
+       ('400 years', 165, 4),
+       ('Stop that train', 235, 4),
+       ('No more trouble', 236, 4),
+       ('One step closer', 184, 5),
+       ('With you', 155, 5),
+       ('Crawling', 200, 5);
+
+
+INSERT INTO Digest (name, release_year)
+VALUES ('The best of alternative', 2019),
+       ('Positive vibes', 2018),
+       ('Legends', 2002),
+       ('All you love', 2020),
+       ('Лучшее Кино', 2005);
+
+
+INSERT INTO Digest_Track
+VALUES (1,18),
+       (2,18),
+       (14,18),
+       (15,18),
+       (5,19),
+       (12,19),
+       (3,20),
+       (4,20),
+       (7,20),
+       (15,21),
+       (13,21),
+       (6,21),
+       (8,21),
+       (4,22),
+       (5,22);
