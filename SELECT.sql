@@ -14,7 +14,14 @@ SELECT name FROM Performer
  WHERE name NOT LIKE '% %';
 
 SELECT name FROM Track
- WHERE LOWER(name) LIKE '%мой%' OR LOWER(name) LIKE '%my%';
+ WHERE name ILIKE 'my'
+    OR name ILIKE '% my'
+    OR name ILIKE 'my %'
+    OR name ILIKE '% my %'
+    OR name ILIKE 'мой'
+    OR name ILIKE '% мой'
+    OR name ILIKE 'мой %'
+    OR name ILIKE '% мой %';
 
 -- 3 ЗАДАНИЕ
 
@@ -33,13 +40,15 @@ SELECT a.name, AVG(duration) FROM Album a
        ON a.id = t.album_id
  GROUP BY a.name;
 
-SELECT p.name FROM Album_Performer ap
-       JOIN Album a
-       ON ap.album_id = a.id
-       JOIN Performer p
-       ON ap.performer_id = p.id
- WHERE release_year != 2020
- GROUP BY p.name;
+SELECT p.name FROM Performer p
+ WHERE p.name NOT IN (SELECT p.name FROM Performer performer_id
+                             JOIN Album_Performer ap 
+                             ON p.id = ap.performer_id
+                             JOIN Album a 
+                             ON a.id = ap.album_id
+                       WHERE release_year = 2020
+                       );
+
 
 SELECT d.name FROM Digest d
        JOIN Digest_Track dt 
@@ -47,25 +56,22 @@ SELECT d.name FROM Digest d
        JOIN Track t 
        ON dt.track_id = t.id
        JOIN Album_Performer ap 
-       ON t.album_id = ap.performer_id
+       ON t.album_id = ap.album_id
        JOIN Performer p 
        ON ap.performer_id = p.id
  WHERE p.name = 'Кино';
 
 -- 4 ЗАДАНИЕ
 
-SELECT a.name FROM Album a
+SELECT DISTINCT a.name FROM Album a
        LEFT JOIN Album_Performer ap 
        ON a.id = ap.album_id
        LEFT JOIN Performer p 
        ON p.id = ap.performer_id
        LEFT JOIN Genre_Performer gp 
        ON p.id = gp.performer_id
-       LEFT JOIN Genre g 
-       ON g.id = gp.genre_id
- GROUP BY a.name
- HAVING COUNT (DISTINCT g.name) > 1 
- ORDER BY a.name;
+ GROUP BY a.name, ap.performer_id
+ HAVING COUNT (gp.genre_id) > 1;
 
 SELECT t.name FROM Track t
        LEFT JOIN Digest_Track dt 

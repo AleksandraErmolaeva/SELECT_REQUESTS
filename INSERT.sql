@@ -44,7 +44,18 @@ VALUES ('Numb', 188, 1),
        ('No more trouble', 236, 4),
        ('One step closer', 184, 5),
        ('With you', 155, 5),
-       ('Crawling', 200, 5);
+       ('Crawling', 200, 5),
+       ('my own', 170, 1),
+       ('own my', 177, 2),
+       ('my' 160, 5),
+       ('oh my god' 174, 4),
+       ('myself', 154, 3)
+       ('by myself', 178, 2),
+       ('bemy self', 190, 4),
+       ('myself by', 145,2),
+       ('by myself by', 150, 1),
+       ('beemy', 300, 2),
+       ('premyne', 275,3);
 
 
 INSERT INTO Digest (name, release_year)
